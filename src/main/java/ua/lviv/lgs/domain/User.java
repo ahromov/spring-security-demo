@@ -19,12 +19,16 @@ public class User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "userid")
 	private Long userId;
+
 	@Column(name = "username")
 	private String userName;
+
 	@Column(name = "password")
 	private String password;
+
 	@Column(name = "email")
 	private String email;
+
 	@Column(name = "enabled")
 	private int enabled;
 
@@ -82,4 +86,5 @@ public class User implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
 }
