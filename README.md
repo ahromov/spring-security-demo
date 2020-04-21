@@ -1,1 +1,1 @@
-Test user: admin, password: admin
+For login on FE test user: admin, password: admin
