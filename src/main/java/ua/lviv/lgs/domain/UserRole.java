@@ -13,29 +13,29 @@ public class UserRole {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_role_id")
-	private Long userroleid;
+	@Column(name = "id")
+	private Long id;
 
 	@Column(name = "userid")
-	private Long userid;
+	private Long userId;
 
 	@Column(name = "role")
 	private String role;
 
-	public Long getUserroleid() {
-		return userroleid;
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserroleid(Long userroleid) {
-		this.userroleid = userroleid;
+	public void setId(Long userRoleId) {
+		this.id = userRoleId;
 	}
 
-	public Long getUserid() {
-		return userid;
+	public Long getUserId() {
+		return userId;
 	}
 
 	public void setUserid(Long userid) {
-		this.userid = userid;
+		this.userId = userid;
 	}
 
 	public String getRole() {
