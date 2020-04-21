@@ -1,0 +1,85 @@
+databaseChangeLog:
+- logicalFilePath: db/changelog/db.changelog-master.yaml
+- changeSet:
+    id: 1
+    author: Andrii Hromov
+    changes:
+    - createTable:
+        tableName: users
+        columns:
+        - column:
+            name: id
+            type: BIGINT
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: email
+            type: varchar(50)
+            constraints:
+              unique: true
+              nullable: false
+        - column:
+            name: enabled
+            type: INT
+            constraints:
+              nullable: false
+        - column:
+            name: password
+            type: varchar(100)
+        - column:
+            name: username
+            type: varchar(50)
+    - createTable:
+        tableName: user_roles
+        columns:
+        - column:
+            name: id
+            type: BIGINT
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: role
+            type: varchar(50)
+            constraints:
+              unique: true
+              nullable: false
+        - column:
+            name: userid
+            type: varchar(50)
+- changeSet:
+    id: 2
+    author: Andrii Hromov
+    comment: Create admin user and role
+    changes:
+    - insert:
+        tableName: users
+        columns:
+        - column:
+            name: email
+            value: admin@domain.com
+        - column:
+            name: enabled
+            value: '1'
+        - column:
+            name: password
+            value: $2a$04$ti5VWYYZgJ98b7RxMQJ5DOG1gTR0WWwTy.lxjZi1kII6l1qNBkcuW
+        - column:
+            name: username
+            value: admin
+    - insert:
+        tableName: user_roles
+        columns:
+        - column:
+            name: role
+            value: ROLE_ADMIN
+        - column:
+            name: userid
+            value: '1'
+rollback:
+- delete:
+    tableName: users
+    tableName: user_role
